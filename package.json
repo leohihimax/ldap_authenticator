@@ -1,0 +1,18 @@
+{
+  "name": "ldap_authenticator",
+  "version": "0.0.1",
+  "description": "ldap authenticator for nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ldap",
+    "authenticator"
+  ],
+  "author": "jiajun ma <leohihimax@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ldapjs": "^1.0.0"
+  }
+}
