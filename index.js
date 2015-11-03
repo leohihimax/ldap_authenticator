@@ -1,12 +1,12 @@
 var ldap = require('ldapjs');
 
-function AuthUser (url, username, password, domainComponent, callback) {
+function AuthUser (url, username, password, domainComponent, field, callback) {
     var client = ldap.createClient({
         url: url
     });
 
     var opts = {
-        filter: '(&(uid='+ username + '))',
+        filter: '(&(' + field + '='+ username + '))',
         scope: 'sub'
     };
 
@@ -31,16 +31,14 @@ function AuthUser (url, username, password, domainComponent, callback) {
                 client.bind(users[0], password, function (err) {
                     if (err) {
                         if (err.name == 'InvalidCredentialsError') {
+                            unbind(client);
                             return callback({message: 'Invalid Password', code: 403});
                         } else {
+                            unbind(client);
                             return callback(err);
                         }
                     }
-                    client.unbind(function (err) {
-                        if (err) {
-                            console.log(err);
-                        }
-                    });
+                    unbind(client);
                     return callback();
                 });
             } else {
@@ -50,6 +48,15 @@ function AuthUser (url, username, password, domainComponent, callback) {
     });
 
 }
+
+function unbind (client) {
+    client.unbind(function (err) {
+        if (err) {
+            console.log(err);
+        }
+    });
+}
+
 
 module.exports = AuthUser;
 

@@ -13,6 +13,14 @@ var config = {
   domainComponent: 'domainComponent',   //'dc=xxx, dc=xxx'
   filterField: 'filterField'            // 'xxx'=username   the username field in ldap
 };
-authUser(config.url, config.username, config.password, config.domainComponent, config.filterField, callback);
+authUser(config.url, config.username, config.password, config.domainComponent, config.filterField, function (err) {
+    if (err) {
+        'authentication fail ......'
+        'do something'
+    } else {
+        'authentication success ......'
+        'do something'
+    }
+});
 ```
 
