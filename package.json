@@ -1,16 +1,17 @@
 {
   "name": "ldap_authenticator",
   "version": "0.0.1",
-  "description": "ldap authenticator for nodejs",
+  "description": "ldap authenticator for nodejs client side",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "ldap",
-    "authenticator"
+    "authenticator",
+    "client"
   ],
-  "author": "jiajun ma <leohihimax@gmail.com>",
+  "author": "jiajun ma <leomajiajun@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "ldapjs": "^1.0.0"
