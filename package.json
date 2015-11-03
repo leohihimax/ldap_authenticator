@@ -1,6 +1,6 @@
 {
   "name": "ldap_authenticator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ldap authenticator for nodejs client side",
   "main": "index.js",
   "scripts": {
