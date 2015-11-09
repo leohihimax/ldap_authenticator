@@ -10,6 +10,12 @@ function AuthUser (url, username, password, domainComponent, field, callback) {
         scope: 'sub'
     };
 
+    client.once('error', function (err) {
+        if (err) {
+            return callback({message: 'connect to ldap server error', code: 500});
+        }
+    });
+
     client.search(domainComponent, opts, function(err, search) {
         var users = [];
         if (err) {
