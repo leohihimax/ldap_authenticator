@@ -19,7 +19,7 @@ function AuthUser (url, username, password, domainComponent, field, callback) {
     client.search(domainComponent, opts, function(err, search) {
         var users = [];
         if (err) {
-            console.log(err);
+            callback({message: err, code: 500});
         }
         search.on('searchEntry', function (entry) {
             if (entry) {
@@ -27,10 +27,10 @@ function AuthUser (url, username, password, domainComponent, field, callback) {
             } 
         });
         search.on('error', function (err) {
-            console.log('error: ' + err);
+            return callback({message: err, code: 500});
         });
         search.on('searchReference', function (referral) {
-            console.log('referral: ' + referral);
+            return callback({message: referral, code: 500});
         });
         search.on('end', function (result) {
             if (users.length > 0) {
